@@ -1,0 +1,15 @@
+.search-table-outter {
+    overflow-x: scroll;
+}
+th, td {
+    min-width: 100px;
+}
+
+table {
+    display: block;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
