@@ -19,5 +19,10 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
     Route::prefix('role')->group(function(){
         Route::get('/',[RoleController::class, 'index'])->name('admin.role.index');
+        Route::get('/edit/{id?}',[RoleController::class,'showEdit'])->name('admin.role.showEdit');
+        Route::post('/edit/{id}',[RoleController::class,'edit'])->name('admin.role.edit');
+        Route::get('/create',[RoleController::class,'showCreate'])->name('admin.role.showCreate');
+        Route::post('/create',[RoleController::class,'create'])->name('admin.role.create');
+        Route::get('/delete/{id}',[RoleController::class,'delete'])->name('admin.role.delete');
     });
 });

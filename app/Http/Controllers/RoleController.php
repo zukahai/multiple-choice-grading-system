@@ -28,15 +28,34 @@ class RoleController extends Controller
         $this->data['roles'] = $listRole;
         return view('admin.pages.role.index', $this->data);
     }
+    public function showEdit($id){
+        $this->data['role']= $this->roleService->find($id);
+        return view('admin.pages.role.edit',$this->data);
+    }
+    public function edit($id, Request $request){
+        $data = ['name'=>$request->role_name];
+        $this->roleService->update($id,$data);
+        return redirect(route('admin.role.index'))->with('info','Cập nhật thành công');
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->roleService->add($request->role_name);
+        return redirect(route('admin.role.index'))->with('info','Thêm role thành công');
+    }
+
+    public function delete($id = null){
+        if($id==null){
+            return redirect(route('admin.role.index'))->with('error','Không tìm thấy role cần xóa');
+        }else{
+            $this->roleService->delete($id);
+            return redirect(route('admin.role.index'))->with('info','Xóa thành công');
+        }
     }
 
     /**
@@ -56,9 +75,9 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function showCreate()
     {
-        //
+        return view('admin.pages.role.create');
     }
 
     /**
@@ -67,10 +86,7 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.

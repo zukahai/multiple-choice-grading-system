@@ -25,6 +25,25 @@ class RoleService{
         }
         return $role->paginate($limit)->withQueryString();
     }
+
+    public function update($id, $data){
+        $this->role->where('id',$id)->update($data);
+        return $this->role->find($id);
+    }
+
+    public function find($id){
+        return $this->role->find($id);
+    }
+
+    public function add($role_name){
+        $role = new Role();
+        $role->name = $role_name;
+        $role->save();
+    }
+    public function delete($id){
+        $this->role->find($id)->delete();
+       
+    }
 }
 
 ?>

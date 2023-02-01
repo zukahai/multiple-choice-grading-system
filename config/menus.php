@@ -28,11 +28,11 @@ return [
                 'name' => 'index',
                 'route' => 'admin.role.index',
             ],
-            // [
-            //     'title' => 'Thêm quyền',
-            //     'name' => 'create',
-            //     'route' => 'admin.role.showcreate',
-            // ],
+            [
+                'title' => 'Thêm quyền',
+                'name' => 'create',
+                'route' => 'admin.role.showCreate',
+            ],
           
         ],
     ],
