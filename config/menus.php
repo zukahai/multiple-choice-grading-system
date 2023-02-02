@@ -36,6 +36,20 @@ return [
           
         ],
     ],
+    [
+        'title' => 'Yêu cầu làm giáo viên',
+        'name' => 'requestTeacher',
+        'route' => 'admin.requestTeacher.index',
+        'children' => [
+            [
+                'title' => 'Danh sách yêu cầu',
+                'name' => 'index',
+                'route' => 'admin.requestTeacher.index',
+            ],
+            
+          
+        ],
+    ],
     // [
     //     'title' => 'Đăng Nhập',
     //     'name' => 'Login',

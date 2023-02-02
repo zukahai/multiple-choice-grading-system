@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RequestTeacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,5 +25,9 @@ Route::prefix('admin')->group(function(){
         Route::get('/create',[RoleController::class,'showCreate'])->name('admin.role.showCreate');
         Route::post('/create',[RoleController::class,'create'])->name('admin.role.create');
         Route::get('/delete/{id}',[RoleController::class,'delete'])->name('admin.role.delete');
+    });
+    Route::prefix('requestTeacher')->group(function(){
+        Route::get('/',[RequestTeacherController::class,'index'])->name('admin.requestTeacher.index');
+        Route::post('/',[RequestTeacherController::class,'edit'])->name('admin.requestTeacher.edit');
     });
 });
