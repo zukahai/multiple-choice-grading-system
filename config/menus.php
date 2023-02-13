@@ -50,6 +50,20 @@ return [
           
         ],
     ],
+    [
+        'title' => 'Câu hỏi',
+        'name' => 'question',
+        'route' => 'teacher.question.index',
+        'children' => [
+            [
+                'title' => 'Danh sách yêu cầu',
+                'name' => 'index',
+                'route' => 'teacher.question.index',
+            ],
+            
+          
+        ],
+    ],
     // [
     //     'title' => 'Đăng Nhập',
     //     'name' => 'Login',

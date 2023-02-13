@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RequestTeacherController;
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,13 @@ Route::prefix('admin')->group(function(){
     Route::prefix('requestTeacher')->group(function(){
         Route::get('/',[RequestTeacherController::class,'index'])->name('admin.requestTeacher.index');
         Route::post('/',[RequestTeacherController::class,'edit'])->name('admin.requestTeacher.edit');
+    });
+});
+
+Route::prefix('teacher')->group(function(){
+  
+    Route::prefix('question')->group(function(){
+        Route::get('/',[QuestionController::class,'index'])->name('teacher.question.index');
+        
     });
 });
