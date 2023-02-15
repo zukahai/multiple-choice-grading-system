@@ -35,9 +35,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showCreate()
     {
-        //
+        return view('teacher.pages.question.create');
     }
 
     /**
@@ -68,9 +68,10 @@ class QuestionController extends Controller
      * @param  \App\Models\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(question $question)
+    public function showEdit($id)
     {
-        //
+       $this->data['question']= $this->questionService->find($id);
+       return View('teacher.pages.question.edit', $this->data); 
     }
 
     /**
@@ -91,8 +92,9 @@ class QuestionController extends Controller
      * @param  \App\Models\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(question $question)
+    public function delete($id = null)
     {
-        //
+        $this->questionService->delete($id);
+        return redirect(route('teacher.question.index'))->with('info','Xóa thành công');
     }
 }

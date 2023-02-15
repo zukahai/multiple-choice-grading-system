@@ -60,6 +60,11 @@ return [
                 'name' => 'index',
                 'route' => 'teacher.question.index',
             ],
+            [
+                'title' => 'Thêm câu hỏi',
+                'name' => 'create',
+                'route' => 'teacher.question.showCreate',
+            ],
             
           
         ],

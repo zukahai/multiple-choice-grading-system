@@ -37,6 +37,9 @@ Route::prefix('teacher')->group(function(){
   
     Route::prefix('question')->group(function(){
         Route::get('/',[QuestionController::class,'index'])->name('teacher.question.index');
+        Route::get('/create',[QuestionController::class,'showCreate'])->name('teacher.question.showCreate');
+        Route::get('/edit/{id?}',[QuestionController::class,'showEdit'])->name('teacher.question.showEdit');
+        Route::get('/delete/{id}',[QuestionController::class,'delete'])->name('teacher.question.delete');
         
     });
 });
