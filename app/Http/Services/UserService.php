@@ -35,14 +35,21 @@ class UserService{
         return $this->User->find($id);
     }
 
-    public function add($User_name){
+    public function add($User_name, $username, $password, $role_id){
         $User = new User();
-        $User->name = $User_name;
+        $User->fullname = $User_name;
+        $User->username = $username;
+        $User->password = $password;
+        $User->role_id = $role_id;
         $User->save();
     }
     public function delete($id){
         $this->User->find($id)->delete();
        
+    }
+    public function checkLogin($username, $password){
+        $user = $this->User;
+        return $user->where('username', '=',  $username)->where('password', '=',  $password)->first();
     }
 }
 
