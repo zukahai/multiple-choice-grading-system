@@ -9,7 +9,7 @@ use App\Http\Services\UserService;
 class UserController extends Controller
 {
 
-    public function __contruct(UserService $userService){
+    public function __construct(UserService $userService){
         $this->userService = $userService;
     }
      
