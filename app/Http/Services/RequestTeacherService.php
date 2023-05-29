@@ -26,6 +26,14 @@ class RequestTeacherService{
         $this->user->where('id',$id)->update($data);
         return $this->user->find($id);
     }
+    public function addRequest($user_id){
+        $requestTeacher = new Request_teacher();
+        $requestTeacher->message = 'I want to teacher';
+        $requestTeacher->status = 'Chưa duyệt';
+        $requestTeacher->user_id = $user_id;
+        $requestTeacher->save();
+
+    }
 
 
 

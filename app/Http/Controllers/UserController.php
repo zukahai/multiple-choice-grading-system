@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use App\Http\Services\UserService;
+use App\Http\Services\RequestTeacherService;
 
 
 class UserController extends Controller
 {
 
-    public function __construct(UserService $userService){
+    public function __construct(UserService $userService, RequestTeacherService $requestTeacherService){
         $this->userService = $userService;
+        $this->requestTeacherService = $requestTeacherService;
     }
      
     public function index(){
@@ -32,5 +35,17 @@ class UserController extends Controller
         }else{
             return redirect(route('login'))->with('error','Đăng nhập thất bại');
         }
+    }
+    public function showRegister(){
+        return View('Login.register');
+    }
+
+    public function register(RegisterRequest $request){
+        $user = $this->userService->add($request->fullname,$request->username,$request->password,'4');
+        if($request->role =='2'){
+            $this->requestTeacherService->addRequest($this->userService->getID($request->username));
+            return redirect(route('home'))->with('success','Đăng ký thành công, chờ admin duyệt quyền');
+        }
+        return redirect(route('home'))->with('success','Đăng ký thành công');
     }
 }

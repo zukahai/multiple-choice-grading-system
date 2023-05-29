@@ -4,7 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <style>
+        .radio-group {
+            align-items: center;
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        .radio-group label {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
     <link rel='stylesheet' href='https://urjadeveloper.com/backend/login/style.css'>
+
+
 
 </head>
 
@@ -246,10 +260,10 @@
             </div>
 
             <div class="inputGroup inputGroup1 focusWithText">
-                <label for="loginEmail" id="loginEmailLabel">Email</label>
-                <input type="email" id="loginEmail" maxlength="254" class=" is-invalid " name="email"
+                <label for="loginEmail" id="loginEmailLabel">Fullname</label>
+                <input type="text" id="loginEmail" maxlength="254" class=" is-invalid " name="fullname"
                     value="" required="">
-                <p class="helper helper1">havana@gamil.com</p>
+
 
             </div>
 
@@ -260,7 +274,7 @@
 
 
                 <div class="indicator"></div>
-                </label>
+
 
             </div>
 
@@ -272,6 +286,19 @@
                     <h4 class="text-danger">{{ $message }}</h4>
                 @enderror
 
+
+            </div>
+
+
+            <div>
+                <div class="radio-group">
+                    <input type="radio" id="teacher" name="role" value="2">
+                    <label for="teacher">Teacher</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="student" name="role" value="4">
+                    <label for="student">Student</label>
+                </div>
             </div>
 
             @if ($message = Session::get('error'))

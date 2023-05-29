@@ -51,6 +51,11 @@ class UserService{
         $user = $this->User;
         return $user->where('username', '=',  $username)->where('password', '=',  $password)->first();
     }
+
+    public function getID($username){
+        $user = $this->User->where('username', '=',  $username)->first();
+        return $user->id;
+    }
 }
 
 ?>

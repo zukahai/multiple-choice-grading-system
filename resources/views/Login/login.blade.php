@@ -267,7 +267,7 @@
                 </div>
             @endif
 
-            {{-- <a href="{{ route('register') }}" class="btn btn-success"> Đăng ký </a> --}}
+            <a href="{{ route('register') }}" class="btn btn-success"> Đăng ký </a>
             <div class="inputGroup inputGroup3">
                 <button id="login">Log in</button>
             </div>
