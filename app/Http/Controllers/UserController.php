@@ -15,6 +15,10 @@ class UserController extends Controller
         $this->userService = $userService;
         $this->requestTeacherService = $requestTeacherService;
     }
+
+    public function home(){
+        return View('welcome');
+    }
      
     public function index(){
         auth()->logout();
@@ -36,6 +40,7 @@ class UserController extends Controller
             return redirect(route('login'))->with('error','Đăng nhập thất bại');
         }
     }
+
     public function showRegister(){
         return View('Login.register');
     }
@@ -44,8 +49,8 @@ class UserController extends Controller
         $user = $this->userService->add($request->fullname,$request->username,$request->password,'4');
         if($request->role =='2'){
             $this->requestTeacherService->addRequest($this->userService->getID($request->username));
-            return redirect(route('home'))->with('success','Đăng ký thành công, chờ admin duyệt quyền');
+            return redirect(route('user.home.index'))->with('success','Đăng ký thành công, chờ admin duyệt quyền');
         }
-        return redirect(route('home'))->with('success','Đăng ký thành công');
+        return redirect(route('user.home.index'))->with('success','Đăng ký thành công');
     }
 }

@@ -5,7 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RequestTeacherController;
-use App\Http\Middleware\CheckAdmin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +17,10 @@ use App\Http\Middleware\CheckAdmin;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::prefix('/')->group(function(){
+    Route::get('/',[UserController::class, 'home'])->name('user.home.index');
+});
+
 Route::prefix('/login')->group(function(){
     Route::post('/',[UserController::class,'login'])->name('user.login.login');
     Route::get('/', [UserController::class, 'index'])->name('login');
