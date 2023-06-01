@@ -45,13 +45,17 @@ Route::prefix('admin')->middleware('CheckAdmin')->group(function(){
     });
 });
 
-Route::prefix('teacher')->group(function(){
+Route::prefix('teacher')->middleware('CheckTeacher')->group(function(){
   
     Route::prefix('question')->group(function(){
         Route::get('/',[QuestionController::class,'index'])->name('teacher.question.index');
         Route::get('/create',[QuestionController::class,'showCreate'])->name('teacher.question.showCreate');
+        Route::post('/create',[QuestionController::class,'create'])->name('teacher.question.create');
         Route::get('/edit/{id?}',[QuestionController::class,'showEdit'])->name('teacher.question.showEdit');
         Route::get('/delete/{id}',[QuestionController::class,'delete'])->name('teacher.question.delete');
         
     });
+});
+
+Route::prefix('student')->group(function(){
 });

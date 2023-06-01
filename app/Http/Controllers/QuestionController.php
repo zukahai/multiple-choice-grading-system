@@ -37,7 +37,7 @@ class QuestionController extends Controller
      */
     public function showCreate()
     {
-        return view('teacher.pages.question.create');
+        return View('teacher.pages.question.create');
     }
 
     /**
@@ -57,9 +57,12 @@ class QuestionController extends Controller
      * @param  \App\Models\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(question $question)
+    public function create(Request $request)
     {
-        //
+        // dd(auth()->user()->id);
+        $this->questionService->add(auth()->id(), $request->question, $request->choicea, 
+    $request->choiceb, $request->choicec, $request->choiced, $request->ans );
+    return redirect(route('teacher.question.index'))->with('info','Thêm câu hỏi thành công');
     }
 
     /**

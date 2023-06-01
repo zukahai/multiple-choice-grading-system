@@ -44,6 +44,18 @@ class QuestionService{
         $this->question->find($id)->delete();
        
     }
+
+    public function add($user_id, $Question, $choiceA, $choiceB, $choiceC, $choiceD, $ans ){
+        $question = new question();
+        $question->user_id = $user_id;
+        $question->question = $Question;
+        $question->choiceA = $choiceA;
+        $question->choiceB = $choiceB;
+        $question->choiceC = $choiceC;
+        $question->choiceD = $choiceD;
+        $question->ans = $ans;
+        $question->save();
+    }
 }
 
 ?>
