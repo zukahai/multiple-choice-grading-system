@@ -1,4 +1,4 @@
-@extends('teacher.layouts.main')
+@extends('admin.layouts.main')
 @section('title_page')
     Create - Question - Teacher - {{ config('app.name') }}
 @endsection
@@ -64,50 +64,42 @@
         @endif
         <div class="form-group my-2">
             <label for="username">Question</label>
-            <input type="text" class="form-control" id="question" name="question" placeholder="Question"
-                value="{{ $question->question }}">
-
+            <input type="text" class="form-control" id="question" name="question" placeholder="Question">
             @error('question')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group my-2">
             <label for="username">Choice A</label>
-            <input type="text" class="form-control" id="choicea" name="choicea" placeholder="Choice A"
-                value="{{ $question->choiceA }}">
-
+            <input type="text" class="form-control" id="choicea" name="choicea" placeholder="Choice A">
             @error('choicea')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group my-2">
             <label for="username">Choice B</label>
-            <input type="text" class="form-control" id="choiceb" name="choiceb" placeholder="Choice B"
-                value="{{ $question->choiceB }}">
+            <input type="text" class="form-control" id="choiceb" name="choiceb" placeholder="Choice B">
             @error('choicea')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group my-2">
             <label for="username">Choice C</label>
-            <input type="text" class="form-control" id="choicec" name="choicec" placeholder="Choice C"
-                value="{{ $question->choiceC }}">
+            <input type="text" class="form-control" id="choicec" name="choicec" placeholder="Choice C">
             @error('choicec')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group my-2">
             <label for="username">Choice D</label>
-            <input type="text" class="form-control" id="choiced" name="choiced" placeholder="Choice D"
-                value="{{ $question->choiceD }}">
+            <input type="text" class="form-control" id="choiced" name="choiced" placeholder="Choice D">
             @error('choiced')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="form-group my-2">
             <label for="username">Answer</label>
-            <input type="text" class="form-control" id="ans" name="ans" placeholder="Answer"
-                value="{{ $question->ans }}">
+            <input type="text" class="form-control" id="ans" name="ans" placeholder="Answer">
             @error('ans')
                 <span class="text-bold text-italic text-danger">{{ $message }}</span>
             @enderror
@@ -116,7 +108,7 @@
 
 
         <div class="justify-content-center d-flex my-5">
-            <button type="submit" class="btn btn-primary">Sửa</button>
+            <button type="submit" class="btn btn-primary">Thêm</button>
         </div>
     </form>
 @endsection

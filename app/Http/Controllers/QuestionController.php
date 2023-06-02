@@ -29,6 +29,14 @@ class QuestionController extends Controller
         return View('teacher.pages.question.index',$this->data);
         
     }
+    public function indexAdmin(Request $request)
+    {
+        $keyword = $request->keywords;
+        $listQuestion = $this->questionService->paginate($this->limit,$keyword);
+        $this->data['questions'] = $listQuestion;
+        return View('admin.pages.question.index',$this->data);
+        
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +46,10 @@ class QuestionController extends Controller
     public function showCreate()
     {
         return View('teacher.pages.question.create');
+    }
+    public function showCreateAdmin()
+    {
+        return View('admin.pages.question.create');
     }
 
     /**
@@ -63,6 +75,13 @@ class QuestionController extends Controller
         $this->questionService->add(auth()->id(), $request->question, $request->choicea, 
     $request->choiceb, $request->choicec, $request->choiced, $request->ans );
     return redirect(route('teacher.question.index'))->with('info','Thêm câu hỏi thành công');
+    }
+    public function createAdmin(Request $request)
+    {
+        // dd(auth()->user()->id);
+        $this->questionService->add(auth()->id(), $request->question, $request->choicea, 
+    $request->choiceb, $request->choicec, $request->choiced, $request->ans );
+    return redirect(route('admin.question.index'))->with('info','Thêm câu hỏi thành công');
     }
 
     /**
@@ -90,6 +109,31 @@ class QuestionController extends Controller
         return redirect(route('teacher.question.index'))->with('info','Cập nhật câu hỏi thành công');
     }
 
+    public function showEditAdmin($id)
+    {
+       $this->data['question']= $this->questionService->find($id);
+       return View('admin.pages.question.edit', $this->data); 
+    }
+
+    public function editAdmin($id, Request $request){
+        $question = $this->questionService->find($id);
+        $data['user_id'] = auth()->id();
+        $data['question'] = $request->question;
+        $data['choicea'] = $request->choicea;
+        $data['choiceb'] = $request->choiceb;
+        $data['choicec'] = $request->choicec;
+        $data['choiced'] = $request->choiced;
+        $data['ans'] = $request->ans;
+        $this->questionService->update($id, $data);
+        return redirect(route('admin.question.index'))->with('info','Cập nhật câu hỏi thành công');
+    }
+
+    public function editStatusQAdmin(Request $request){
+        $data = ['status' => "Đã duyệt"];
+        $this->questionService->update($request->id, $data);
+        return redirect(route('admin.question.index'))->with('info','Cập nhật câu hỏi thành công');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -112,5 +156,10 @@ class QuestionController extends Controller
     {
         $this->questionService->delete($id);
         return redirect(route('teacher.question.index'))->with('info','Xóa thành công');
+    }
+    public function deleteAdmin($id = null)
+    {
+        $this->questionService->delete($id);
+        return redirect(route('admin.question.index'))->with('info','Xóa thành công');
     }
 }

@@ -13,7 +13,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
-    @include('admin.includes.styles')
+    @include('teacher.includes.styles')
     @yield('css_custom')
 </head>
 <!--end::Head-->
@@ -286,10 +286,10 @@
                                 <div class="cursor-pointer symbol symbol-35px symbol-md-40px"
                                     data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                     data-kt-menu-placement="bottom-end">
-                                    <img src="{{ auth()->user() != null ? url(auth()->user()->URL) : '' }}"
-                                        alt="user" />
+                                    {{-- <img src="{{ auth()->user() != null ? url(auth()->user()->) : '' }}"
+                                        alt="user" /> --}}
                                 </div>
-                                @include('admin.includes.user')
+                                @include('teacher.includes.user')
                                 <!--end::Menu wrapper-->
                             </div>
                             <!--end::User menu-->
@@ -369,12 +369,13 @@
                             data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
                             data-kt-scroll-save-state="true">
                             <!--begin::Menu-->
-                            @include('admin.includes.menus')
+                            @include('teacher.includes.menus')
                             <!--end::Menu-->
                         </div>
                         <!--end::Menu wrapper-->
                     </div>
                     <!--end::sidebar menu-->
+
                     <!--begin::Footer-->
 
                     <!--end::Footer-->
@@ -435,7 +436,7 @@
                         <!--end::Content-->
                     </div>
                     <!--end::Content wrapper-->
-                    @include('admin.includes.footer')
+                    @include('teacher.includes.footer')
                 </div>
                 <!--end:::Main-->
             </div>
@@ -460,7 +461,7 @@
         <!--end::Svg Icon-->
     </div>
     <!--end::Scrolltop-->
-    @include('admin.includes.scripts')
+    @include('teacher.includes.scripts')
     @yield('jscustom');
 </body>
 <!--end::Body-->

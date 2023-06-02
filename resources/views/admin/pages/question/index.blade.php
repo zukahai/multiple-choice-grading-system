@@ -1,4 +1,4 @@
-@extends('teacher.layouts.main')
+@extends('admin.layouts.main')
 @section('title_page')
     {{ config('app.name') }}
 @endsection
@@ -42,7 +42,7 @@
     Question
 @endsection
 @section('actions_layout')
-    <a href="{{ route('teacher.question.index') }}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{ route('admin.question.index') }}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List Question
     </a>
 @endsection
@@ -140,7 +140,7 @@
                             <i class="fa fa-asterisk"></i>
                         </a> --}}
 
-                        <a href="{{ route('teacher.question.showEdit') }}/{{ $item->id }}"
+                        <a href="{{ route('admin.question.showEdit') }}/{{ $item->id }}"
                             class="btn btn-icon btn-success btn-sm btn-icon-md btn-circle mx-1" title="Sửa">
                             <i class="fa fa-edit"></i>
                         </a>
@@ -149,6 +149,20 @@
                             data-toggle="tooltip" data-placement="top" data-id="{{ $item->id }}" title="Xóa">
                             <i class="fa fa-trash"></i>
                         </span>
+                        <form action="{{ route('admin.question.editStatus') }}" method="POST">
+                            @csrf
+                    <td class="text-right">
+                        <input type="hidden" name='id' value="{{ $item->id }}">
+                    </td>
+                    <td class="text-right">
+                        @if ($item->status != 'Đã duyệt')
+                            <div class="form-group d-flex justify-content-center">
+                                <input class="btn-success btn" type="submit" value="Duyệt" name="submit" id="submit">
+                            </div>
+                        @endif
+                    </td>
+                    </form>
+
                     </td>
                 </tr>
             @empty

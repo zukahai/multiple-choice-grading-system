@@ -1,4 +1,4 @@
-@extends('teacher.layouts.main')
+@extends('admin.layouts.main')
 @section('title_page')
     Create - Question - Teacher - {{ config('app.name') }}
 @endsection

@@ -43,6 +43,16 @@ Route::prefix('admin')->middleware('CheckAdmin')->group(function(){
         Route::get('/',[RequestTeacherController::class,'index'])->name('admin.requestTeacher.index');
         Route::post('/',[RequestTeacherController::class,'edit'])->name('admin.requestTeacher.edit');
     });
+    Route::prefix('question')->group(function(){
+        Route::get('/',[QuestionController::class,'indexAdmin'])->name('admin.question.index');
+        Route::get('/create',[QuestionController::class,'showCreateAdmin'])->name('admin.question.showCreate');
+        Route::post('/create',[QuestionController::class,'createAdmin'])->name('admin.question.create');
+        Route::get('/edit/{id?}',[QuestionController::class,'showEditAdmin'])->name('admin.question.showEdit');
+        Route::post('/edit/{id?}',[QuestionController::class,'editAdmin'])->name('admin.question.edit');
+        Route::post('/',[QuestionController::class,'editStatusQAdmin'])->name('admin.question.editStatus');
+        Route::get('/delete/{id}',[QuestionController::class,'deleteAdmin'])->name('admin.question.delete');
+        
+    });
 });
 
 Route::prefix('teacher')->middleware('CheckTeacher')->group(function(){
