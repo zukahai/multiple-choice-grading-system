@@ -52,6 +52,7 @@ Route::prefix('teacher')->middleware('CheckTeacher')->group(function(){
         Route::get('/create',[QuestionController::class,'showCreate'])->name('teacher.question.showCreate');
         Route::post('/create',[QuestionController::class,'create'])->name('teacher.question.create');
         Route::get('/edit/{id?}',[QuestionController::class,'showEdit'])->name('teacher.question.showEdit');
+        Route::post('/edit/{id?}',[QuestionController::class,'edit'])->name('teacher.question.edit');
         Route::get('/delete/{id}',[QuestionController::class,'delete'])->name('teacher.question.delete');
         
     });

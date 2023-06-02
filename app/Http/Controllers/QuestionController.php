@@ -77,6 +77,19 @@ class QuestionController extends Controller
        return View('teacher.pages.question.edit', $this->data); 
     }
 
+    public function edit($id, Request $request){
+        $question = $this->questionService->find($id);
+        $data['user_id'] = auth()->id();
+        $data['question'] = $request->question;
+        $data['choicea'] = $request->choicea;
+        $data['choiceb'] = $request->choiceb;
+        $data['choicec'] = $request->choicec;
+        $data['choiced'] = $request->choiced;
+        $data['ans'] = $request->ans;
+        $this->questionService->update($id, $data);
+        return redirect(route('teacher.question.index'))->with('info','Cập nhật câu hỏi thành công');
+    }
+
     /**
      * Update the specified resource in storage.
      *
