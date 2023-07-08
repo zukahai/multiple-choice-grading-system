@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\RequestTeacherController;
 
 /*
@@ -65,6 +66,15 @@ Route::prefix('teacher')->middleware('CheckTeacher')->group(function(){
         Route::post('/edit/{id?}',[QuestionController::class,'edit'])->name('teacher.question.edit');
         Route::get('/delete/{id}',[QuestionController::class,'delete'])->name('teacher.question.delete');
         
+    });
+
+    Route::prefix('exam')->group(function(){
+        Route::get('/', [ExamController::class, 'index'])->name('teacher.exam.index');
+        Route::get('/create',[ExamController::class,'showCreate'])->name('teacher.exam.showCreate');
+        Route::post('/create',[ExamController::class,'create'])->name('teacher.exam.create');
+        Route::get('/edit/{id?}',[ExamController::class,'showEdit'])->name('teacher.exam.showEdit');
+        Route::post('/edit/{id?}',[ExamController::class,'edit'])->name('teacher.exam.edit');
+        Route::get('/delete/{id}',[ExamController::class,'delete'])->name('teacher.exam.delete');
     });
 });
 
